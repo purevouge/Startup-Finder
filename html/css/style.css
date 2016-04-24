@@ -1,0 +1,314 @@
+/* CSS Document */
+/*=============================================================================
+   doc Info
+========================================================================== */
+/***
+	nav : nrml:#fcf9f4 hover/active:#df7f25 font:Raleway-Medium
+	banner : #f4b400; font:Nexa Rust Script, font:Raleway-Medium #fff
+	section heading : font:Raleway-Medium #df7f25
+	subheading : font:Nexa Rust Script #191919; font:Raleway-SemiBold #191919
+	text : font:Raleway-Medium #464646
+	background: fcf9f4, f5f2ed
+	highlighting : #fce7c0
+	call to action : #df7f25, #10a624
+/*=============================================================================
+   font face
+========================================================================== */
+@font-face {
+	font-family: 'Aller';
+	src: url('../fonts/Aller.eot');
+	src: url('../fonts/Aller.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Aller.woff2') format('woff2'),
+		 url('../fonts/Aller.woff') format('woff'),
+		 url('../fonts/Aller.ttf') format('truetype'),
+		 url('../fonts/Aller.svg#Aller') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+}
+@font-face {
+	font-family: 'Aller-bold';
+	src: url('../fonts/Aller-Bold.eot');
+	src: url('../fonts/Aller-Bold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Aller-Bold.woff2') format('woff2'),
+		 url('../fonts/Aller-Bold.woff') format('woff'),
+		 url('../fonts/Aller-Bold.ttf') format('truetype'),
+		 url('../fonts/Aller-Bold.svg#Aller-Bold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+}
+@font-face {
+	font-family: 'Gotham';
+	src: url('../fonts/Gotham-Bold.eot');
+	src: url('../fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Gotham-Bold.woff2') format('woff2'),
+		 url('../fonts/Gotham-Bold.woff') format('woff'),
+		 url('../fonts/Gotham-Bold.ttf') format('truetype'),
+		 url('../fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+}
+/*=============================================================================
+   helpers
+========================================================================== */
+.noBorder{ border:0 !important;}
+.visible{visibility:visible !important;}
+.sndBck{z-index:-1 !important;}
+/*=============================================================================
+   common
+========================================================================== */
+html, body{width:100%;height:100%;}
+body {font-family:"Aller","Arial",sans-serif;font-size:16px;color:#fff;background:url(../img/map-full.jpg) no-repeat; background-size:cover;}
+/*=============================================================================
+   reset
+========================================================================== */
+ul{padding:0; list-style:none;}
+a:hover{text-decoration:none;
+		-webkit-transition: color .5s ease-in-out,padding .5s ease-in-out;
+		-moz-transition: color .5s ease-in-out,padding .5s ease-in-out;
+		transition: color .5s ease-in-out,padding .5s ease-in-out;
+}
+/*=============================================================================
+   typography
+========================================================================== */
+h1, h2, h3, h4, h5, h6{font-family: 'Aller-bold'; color:#fff;}
+p{line-height:1.5;letter-spacing:0.25px; }
+/*=============================================================================
+   content
+========================================================================== */
+.intro{
+	text-align:center;
+	position:relative;
+	z-index:9;
+	height:100%;
+}
+.banner{
+  	border-radius: 4px;
+  	background-color: rgba(25,51,65,0.95);
+  	box-shadow: 1.5px 2.598px 3px 0px #193341;
+	font-size:20px;
+	margin-top:15%;
+	padding:50px 25px;
+	position:relative;
+}
+.banner .logo{
+  	border-radius: 4px;
+  	background-color: rgba(25,51,65,1.00);
+  	box-shadow: 1.5px 2.598px 3px 0 #12222b;
+	padding:15px 25px;
+	position:absolute;
+	top:-30px;
+	left:0;
+	right:0;
+	margin-left:auto;
+	margin-right:auto;
+	width:220px;
+}
+.banner h1{
+	font-size:40px;
+	letter-spacing:0.56px;
+}
+.banner span{
+	color:#e86b67;
+}
+.intro .btn{
+	margin-top:30px;
+}
+/*=============================================================================
+   menu
+========================================================================== */
+nav{
+	position:absolute;
+	width:64px;
+	height:100%;
+	background:#193341;	
+	z-index:999;
+}
+nav .logo{
+	height:190px;
+	display:block;
+}
+nav .logo img{
+	-webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+	position:relative;
+	left:-50px;
+	top:80px;
+}
+nav a{
+	background:#203a48;
+	font-size:24px;
+	display:block;
+	text-align:center;
+	margin:2px 3px 2px 2px;
+	color:#fefefe;
+	height:60px;
+	line-height:60px;
+}
+nav a:hover{
+	background:#132A35;
+	color:#fff;
+	-webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+	-moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+	transition: background .5s ease-in-out,padding .5s ease-in-out;
+}
+/*=============================================================================
+   map
+========================================================================== */
+.map{
+	height:100%;
+	width:100%;
+	position:absolute !important;
+	top:0;
+	visibility:hidden;
+}
+#startup-finder {
+	height:100%;
+	width:100%;
+	z-index:99;
+}
+.gm-style-iw * {
+	display: block;
+	
+}
+.gm-style-iw h4, .gm-style-iw p {
+	margin: 0;
+	padding: 0;
+}
+.gm-style-iw a {
+	color: #4272db;
+}
+.gm-style-iw img{
+	width:130px;
+}
+/*=============================================================================
+   footer
+========================================================================== */
+footer{
+	position:absolute;
+	bottom:2%;
+	left:75px;
+	color:#193341;
+	font-size:12px;
+	z-index:99;
+}
+footer ul{
+	margin:0;
+}
+footer a{
+	color:#193341;
+}
+footer a:after{
+	content:"/";
+	margin-left:10px;
+}
+footer li:last-of-type a:after{
+	content:"";
+	margin:0;
+}
+/*=============================================================================
+   UI
+========================================================================== */
+.btn{
+  	border-radius: 4px;
+  	background-color: #E86B67;
+  	font-size: 24px;
+  	font-family: "Gotham";
+  	color: #FFFFFF;
+	text-transform:uppercase;
+	-webkit-text-shadow: 0px 2px 0px rgba(210, 79, 75, 1);
+	-moz-text-shadow: 0px 2px 0px rgba(210, 79, 75, 1);
+	text-shadow: 0px 2px 0px rgba(210, 79, 75, 1);
+	padding:10px 40px;
+	-webkit-box-shadow: 0px 2px 0px 0px rgba(190,81,77,1);
+	-moz-box-shadow: 0px 2px 0px 0px rgba(190,81,77,1);
+	box-shadow: 0px 2px 0px 0px #BE514D;
+}
+.btn:hover{
+	color:#fff;
+  	background-color: #D05A56;
+	-webkit-text-shadow: 0px 2px 0px #A84440;
+	-moz-text-shadow: 0px 2px 0px #A84440;
+	text-shadow: 0px 2px 0px #A84440;
+	-webkit-box-shadow: 0px 2px 0px 0px #A84440;
+	-moz-box-shadow: 0px 2px 0px 0px #A84440;
+	box-shadow: 0px 2px 0px 0px #A84440;
+	-webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+	-moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+	transition: background .5s ease-in-out,padding .5s ease-in-out;
+}
+/*=============================================================================
+   responsive fixes
+========================================================================== */
+@media (min-width: 1930px) {
+	
+}
+@media (max-width: 991px) {
+	
+}
+@media (max-width: 767px) {
+	
+}
+@media (max-width: 599px) {
+	
+}
+@media (max-width: 430px) {
+	.banner h1{
+		font-size:28px;
+	}	
+	.intro .btn {
+		margin-top: 10px;
+	}
+	
+	nav{
+		width:100%;
+		height:64px;
+		bottom:0;
+	}
+	nav .logo{
+		height:auto;
+		width:170px;
+		display:inline-block;
+	}
+	nav .logo img{
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		position:relative;
+		left:5px;
+		top:20px;
+	}
+	nav ul{
+		float:right;
+		margin:0;
+	}
+	nav ul li{
+		display:inline-block;
+	}
+	nav a{
+		display: inline-block;
+    	height: 64px;
+    	line-height: 64px;
+    	margin: 0 0 0 -2px;
+    	width: 60px;
+	}
+	footer{
+		display:none;
+	}
+}
+@media (max-width: 320px) {
+	.banner{
+		margin-top:5%;
+		padding:5px 25px;
+	}
+	.banner .logo{
+		display:none;
+	}
+}
