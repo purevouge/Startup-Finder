@@ -28,6 +28,27 @@ $(document).ready(function() {
 	new WOW().init();
 });
 
+// get data from csv
+var companyName, founder, city, country, postalCode, street, photo, homePage, latitude, longitude=new Array();
+var addcom = companyName + "<br>" + founder + "<br>" + photo + "<br>" + street + "," + city + "<br>" + postalCode + "," + country;
+d3.csv("data/data.csv", function(data){
+	var dataEnter = d3.select("body").selectAll("article").data(data).enter();	
+	dataEnter.append("span").html(function(d){
+	    companyName = JSON.stringify(d["Company Name"]).replace(/"/g, "");
+		founder = JSON.stringify(d["Founder"]).replace(/"/g, "");
+		city = JSON.stringify(d["City"]).replace(/"/g, "");
+		country = JSON.stringify(d["Country"]).replace(/"/g, "");
+		postalCode = JSON.stringify(d["Postal Code"]).replace(/"/g, "");
+		street = JSON.stringify(d[" Street"]).replace(/"/g, "");
+		photo = JSON.stringify(d["Photo"]).replace(/"/g, "");
+		homePage = JSON.stringify(d["Home Page"]).replace(/"/g, "");
+		latitude = JSON.stringify(d["Garage Latitude"]).replace(/"/g, "");
+		longitude = JSON.stringify(d["Garage Longitude"]).replace(/"/g, "");
+		alert(longitude);
+		
+		var val1 = d["Company Name"] + "," + d["Founder"] + "," + d["City"] + "," + d["Postal Code"] + "," + d[" Street"] + "," + d["Garage Latitude"] + "," + d["Garage Longitude"];
+		return  val1;
+});
 // map 
     google.maps.event.addDomListener(window, 'load', init);
     var map;
@@ -53,8 +74,10 @@ $(document).ready(function() {
         var mapElement = document.getElementById('startup-finder');
         var map = new google.maps.Map(mapElement, mapOptions);
         var locations = [
-						['Google', '<b>Google Inc.</b><br><img width=\"150px\" src=\"http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/02/google-headquarters.jpg\"><br>Larry Page & Sergey Brin<br>1600 Amphitheatre Pkwy<br>CA 94043- Mountain View<br>USA.', 'undefined', 'undefined', 'google.com', 37.4224497, -122.08403290000001, 'https://mapbuildr.com/assets/img/markers/solid-pin-red.png'],
+						[companyName, "<b>" + companyName + "</b><br>" + founder + "<br>" + '<img src=\"' + photo + '\"><br>' + street + "," + city + " - " + postalCode + "<br>" + country, 'undefined', 'undefined', homePage, latitude, longitude, 'https://mapbuildr.com/assets/img/markers/solid-pin-red.png'],
+						
 						['Apple', '<b>Apple Inc.</b><br><img src=\"http://mobilitylab.org/wp-content/uploads/2014/04/Apple.jpg\"><br>Steve Jobs & Steve Wozniak<br>1 Infinite Loop <br>CA 95014 - Cupertino<br>USA', 'undefined', 'undefined', 'apple.com', 37.3316936, -122.03021910000001, 'https://mapbuildr.com/assets/img/markers/solid-pin-red.png'],
+						
 						['Microsoft', '<b>Microsoft Inc.</b><br><img src=\"http://cdn.geekwire.com/wp-content/uploads/2015/09/mscampus-620x405.jpg\"><br>Bill Gates<br>One Microsoft Way <br>WA 98052-7329 - Redmond<br>USA', 'undefined', 'undefined', 'microsoft.com', 37.472189, -122.190191, 'https://mapbuildr.com/assets/img/markers/solid-pin-red.png']
         ];
         for (i = 0; i < locations.length; i++) {
@@ -107,3 +130,4 @@ link = web;
         });
  }
 }
+});
