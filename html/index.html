@@ -38,7 +38,6 @@
 		<title>Startup Finder</title>
 		<!-- styles -->
         <link rel="stylesheet" type="text/css" href="plugins/bootstrap/css/bootstrap.min.css">
-        <!--<link rel="stylesheet" type="text/css" href="plugins/bootstrap/css/bootstrap-rtl.min.css">-->
         <link rel="stylesheet" type="text/css" href="plugins/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="plugins/WOW-master/animate.css">
         <link rel="stylesheet" type="text/css" href="css/main.css" />
@@ -80,11 +79,24 @@
                 <i class="logo"><img src="img/logo.png" alt=""/></i>
                 <ul>
                 	<li><a href="javascript:void(0);"><i class="fa fa-plus-circle"></i></a></li>
-                	<li><a href="javascript:void(0);"><i class="fa fa-th"></i></a></li>
+                	<li><a href="javascript:void(0);" data-toggle="modal" data-target="#locations_gridModal"><i class="fa fa-th"></i></a></li>
                 </ul>    
             </nav>
             <!-- menu end -->
+            <!-- map start -->
         	<div id='startup-finder'></div>
+            <!-- map end -->
+            <!-- locations grid start -->
+            <div class="modal fade" id="locations_gridModal" tabindex="-1" role="dialog" aria-labelledby="locations_gridModal">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div id="viz6"></div
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- locations grid modal end -->
         </section>
         <!-- map end -->
         <footer>
