@@ -76,6 +76,8 @@ a:hover{
 ========================================================================== */
 h1, h2, h3, h4, h5, h6{font-family: 'Aller-bold'; color:#fff;}
 p{line-height:1.5;letter-spacing:0.25px; }
+a{color:#f27874;}
+a:hover{color:#fff;}
 /*=============================================================================
    content
 ========================================================================== */
@@ -196,6 +198,110 @@ nav a:hover{
 .modal-backdrop{
 	display:none;
 }
+.modal-content{
+	box-shadow:1.5px 2.598px 10px 0px rgb( 0, 0, 0 );
+	border:none;
+	border-radius:0;
+	background:rgba(32,58,72,0.95);
+	color:#ffffff;
+}
+.modal-dialog{
+	width:90%;
+	margin-left:5%;
+}
+.modal-header{
+	border-bottom:1px solid #1f313a;
+	padding:15px 15px 10px;
+}
+.modal-header a{
+	color:#fff;
+	font-size:20px;
+	margin-right:10px;
+}
+.modal-header .close{
+	color:#fff;
+	opacity:0.9;
+	font-size:32px;
+}
+.modal-body{
+	padding:0;
+}
+/*=============================================================================
+   grid
+========================================================================== */
+table.grid{
+	border-collapse:inherit;
+	padding-bottom:10px;
+	font-size:14px;
+}
+table.grid th{
+	border-top:1px solid #314753 !important;
+	border-bottom:1px solid #1f313a !important;
+}
+table.grid td{
+	border-top:1px solid #314753 !important;
+	border-bottom:1px solid #1f313a !important;
+	vertical-align:middle !important;
+}
+table.grid tbody tr:first-of-type{
+	position:relative;
+}
+table.grid td:first-of-type{
+	text-align: right;
+    width: 35px;
+}
+table.grid .footable-row-detail td:first-of-type{
+	text-align:left;
+	padding-left:43px;
+}
+table.grid .footable-row-detail-name{
+	border-right:1px solid #25485A;
+	padding-right:20px;
+	line-height:28px;
+}
+table.grid .footable-row-detail-value{
+	border-left:1px solid rgba(27,52,66,0.75);
+	padding-left:20px;
+}
+table.grid .footable-row-detail td:first-of-type a{
+	position:static;
+	right:auto;
+}
+.footable.breakpoint > tbody > tr > td > span.footable-toggle{
+	color:#fff;
+}
+.footable.breakpoint > tbody > tr > td > span.footable-toggle::before{
+	font-family: FontAwesome;
+	content:"\f105";
+}
+.footable.breakpoint > tbody > tr.footable-detail-show > td > span.footable-toggle::before{
+	font-family: FontAwesome;
+	content:"\f107";
+}
+table.grid tr:last-of-type td{
+	border-bottom:2px solid #fff !important;
+}
+table.grid .header{
+	cursor:pointer;
+}
+table.grid .header:after{
+	font-family: FontAwesome;
+	font-size:12px;
+	position:relative;
+	left:5px;
+}
+table.grid .header:after{
+   	content: "\f0dc";
+}
+table.grid .headerSortUp:after{
+   	content: "\f0de";
+}
+table.grid .headerSortDown:after{
+   	content: "\f0dd";
+}
+table.grid img{
+	width:100px;
+}
 /*=============================================================================
    footer
 ========================================================================== */
@@ -217,6 +323,9 @@ footer a:after{
 	content:"/";
 	margin-left:10px;
 }
+footer a:hover{
+	color:#284F64;
+}
 footer li:last-of-type a:after{
 	content:"";
 	margin:0;
@@ -224,6 +333,7 @@ footer li:last-of-type a:after{
 /*=============================================================================
    UI
 ========================================================================== */
+/*** btns ***/
 .btn{
   	border-radius: 4px;
   	background-color: #E86B67;
@@ -262,7 +372,13 @@ footer li:last-of-type a:after{
 	
 }
 @media (max-width: 767px) {
-	
+	table.grid thead{
+		display:none;
+	}
+	table.grid td:first-of-type a{
+		position:absolute;
+		right:17px;
+	}
 }
 @media (max-width: 599px) {
 	
@@ -274,7 +390,6 @@ footer li:last-of-type a:after{
 	.intro .btn {
 		margin-top: 10px;
 	}
-	
 	nav{
 		width:100%;
 		height:64px;
@@ -311,6 +426,19 @@ footer li:last-of-type a:after{
 	}
 	footer{
 		display:none;
+	}
+	.modal-dialog{
+		width:100%;
+		margin:auto;
+	}
+	table.grid .footable-row-detail td:first-of-type{
+		padding-left:13px;
+	}
+	table.grid .footable-row-detail-name{
+		padding-right:10px;
+	}
+	table.grid .footable-row-detail-value{
+		padding-left:10px;
 	}
 }
 @media (max-width: 320px) {
