@@ -79,7 +79,7 @@
             <nav>
                 <i class="logo"><img src="img/logo.png" alt=""/></i>
                 <ul>
-                	<li><a href="javascript:void(0);"><i class="fa fa-plus-circle"></i></a></li>
+                	<li><a href="javascript:void(0);" data-toggle="modal" data-target="#add_locationModal"><i class="fa fa-plus-circle"></i></a></li>
                 	<li><a href="javascript:void(0);" data-toggle="modal" data-target="#locations_gridModal"><i class="fa fa-th"></i></a></li>
                 </ul>    
             </nav>
@@ -105,6 +105,28 @@
               </div>
             </div>
             <!-- locations grid modal end -->
+            <!-- add location start -->
+            <div class="modal fade" id="add_locationModal" tabindex="-1" role="dialog" aria-labelledby="add_locationModal">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                	<div class="modal-header">
+                    	<div class="pull-right">
+                        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        	<a href="javascript:void(0);"><i class="fa fa-question-circle"></i></a>
+                        </div>    
+                        <h4 class="modal-title" id="myModalLabel">Add Startup</h4>
+                     </div>
+                  	<div class="modal-body">
+                        <form>
+                        	<textarea id="getVal" placeholder="Company               Founder               City               Country               Postal Code               Street                         Photo                         Home page                    Latitude               Longitude
+"></textarea>
+                            <button id="addAct" class="btn btn-mainAct btn-sm">Add</button>
+                        </form>
+                  	</div>
+                </div>
+              </div>
+            </div>
+            <!-- add location modal end -->
         </section>
         <!-- map end -->
         <footer>

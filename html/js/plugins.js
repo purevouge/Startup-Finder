@@ -41,15 +41,20 @@ $(document).ready(function() {
 			  $('td:contains("http://")', this).each(function () {
 				  var imgLnk = $(this).text();
 				  $(this).html("<img src='" + imgLnk + "'>");
-			   })
+			  })
 			   
 			  $('td:contains(".com")', this).each(function () {
 				  var siteLnk = $(this).text();
 				  $(this).html("<a target='_blank' href='http://" + siteLnk + "'>" + siteLnk + "</a>");
-			   })
+			  })
 			   
-			   $('#data_grid th:first-of-type').html("#");
-			   $('#data_grid td:first-of-type').html("<a href='javascript:void(0);'><i class='fa fa-eye'></i></a>");
+			  $('#data_grid th:first-of-type').html("#");
+			  $('#data_grid td:first-of-type').html("<a href='javascript:void(0);'><i class='fa fa-eye'></i></a>");
+			   
+			   
+			  $('td:last-of-type:contains("no")', this).each(function () {				   
+			  		$(this).closest('tr').find('td:first-of-type > a > i').toggleClass('fa-eye-slash').css('color', '#fff');
+			  })
 		  })
 		  
 		  // responsive data table

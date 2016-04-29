@@ -47,29 +47,35 @@ function getMarkersDetails(){
 			var homePage = JSON.stringify(d["Home Page"]).replace(/"/g, "");
 			var latitude = JSON.stringify(d["Garage Latitude"]).replace(/"/g, "");
 			var longitude = JSON.stringify(d["Garage Longitude"]).replace(/"/g, "");
-	
-			addMarker(latitude, longitude, companyName, founder, city, country, postalCode, street, photo, homePage);
+			var flag = JSON.stringify(d["Enabled"]).replace(/"/g, "");
+			
+			addMarker(latitude, longitude, companyName, founder, city, country, postalCode, street, photo, homePage, flag);
 			/*alert(companyName);*/
 		});
 	});		
 }
 // add map markers
-function addMarker(latitude, longitude, companyName, founder, city, country, postalCode, street, photo, homePage){					
+function addMarker(latitude, longitude, companyName, founder, city, country, postalCode, street, photo, homePage, flag){
+						
 	var	description = "<b>" + companyName + "</b><br>" + founder + "<br>" + '<img src=\"' + photo + '\"><br>' + street + "<br>" + city + " - " + postalCode + "<br>" + country + "<br> <a href=" + homePage + "target='_blank' title='companyName'>" + homePage + "</a>";
 	var	web = homePage;
 	var	mainIcon = 'img/icons/solid-pin-normal.png';
 	var	selectedIcon = 'img/icons/solid-pin-active.png';
 	if (web.substring(0, 7) != "http://") {link = "http://" + web;} else {link = web;}
-	var marker = new google.maps.Marker({
-		icon: mainIcon,
-		position: new google.maps.LatLng(latitude, longitude),
-		map: map,
-		title: companyName,
-		desc: description,
-		web: web,
-		selected: false
-	});			 
-	markers.push(marker);	 
+	// check if the row is hidden
+	if(flag != "no"){
+	  var marker = new google.maps.Marker({
+		  icon: mainIcon,
+		  position: new google.maps.LatLng(latitude, longitude),
+		  map: map,
+		  title: companyName,
+		  desc: description,
+		  web: web,
+		  selected: false
+	  });	
+	
+		markers.push(marker);
+	}
 	var markerIndex =  parseInt(markers.length) - 1; 
 	google.maps.event.addListener(markers[markerIndex], 'click', function() {
 		//open info window
@@ -106,4 +112,29 @@ d3.text("data/data.csv", function (datasetText) {
         .data(function(d){return d;})
         .enter().append("td")
         .text(function(d){return d;})
+});
+
+$("#addAct").click(function() {
+	var lines = $('#getVal').val().split(/\n/);
+	var texts = []
+	for (var i=0; i < lines.length; i++) {
+	  // only push this line if it contains a non whitespace character.
+	  if (/\S/.test(lines[i])) {
+		texts.push($.trim(lines[i]));
+	  }
+	}
+	
+	var A = JSON.stringify(texts);
+	var csvRows = [];
+	for(var i=0, l=A.length; i<l; ++i){
+		csvRows.push(A[i].join(','));
+	}
+	var csvString = csvRows.join("%0A");
+	var a         = document.createElement('a');
+	a.href        = 'data:attachment/csv,' + csvString;
+	a.target      = '_blank';
+	a.download    = 'data.csv';
+	
+	document.body.appendChild(a);
+	a.click();
 });
