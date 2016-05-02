@@ -1,3 +1,10 @@
+$(document).ready(function () {
+    if(window.location.href.indexOf("1") > -1) {
+       $('.intro').hide();
+	   $('.map').css('visibility', 'visible');
+    }
+});
+
 $(".intro .btn").click(function() {
 	$('.intro').addClass('animated zoomOut sndBck');
 	$('.map').addClass('animated slideInUp visible');
@@ -8,12 +15,11 @@ var map;
 var markers = [];
 var infowindow = new google.maps.InfoWindow();
 google.maps.event.addDomListener(window, 'load', init);
-
 function init() {
 	// map options
 	var mapOptions = {
-    	center: new google.maps.LatLng(37.4224497,-122.08403290000001),
-        zoom: 10,
+    	center: new google.maps.LatLng(37.4224497,-100.08403290000001),
+        zoom: 5,
         zoomControl: false,
         disableDoubleClickZoom: true,
         mapTypeControl: false,
@@ -112,29 +118,4 @@ d3.text("data/data.csv", function (datasetText) {
         .data(function(d){return d;})
         .enter().append("td")
         .text(function(d){return d;})
-});
-
-$("#addAct").click(function() {
-	var lines = $('#getVal').val().split(/\n/);
-	var texts = []
-	for (var i=0; i < lines.length; i++) {
-	  // only push this line if it contains a non whitespace character.
-	  if (/\S/.test(lines[i])) {
-		texts.push($.trim(lines[i]));
-	  }
-	}
-	
-	var A = JSON.stringify(texts);
-	var csvRows = [];
-	for(var i=0, l=A.length; i<l; ++i){
-		csvRows.push(A[i].join(','));
-	}
-	var csvString = csvRows.join("%0A");
-	var a         = document.createElement('a');
-	a.href        = 'data:attachment/csv,' + csvString;
-	a.target      = '_blank';
-	a.download    = 'data.csv';
-	
-	document.body.appendChild(a);
-	a.click();
 });

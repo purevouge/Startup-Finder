@@ -7,6 +7,12 @@
 	<head>
     	<!-- meta tags -->
         <meta charset="utf-8">
+        <!-- no cache headers -->
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <!-- end no cache headers -->
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="author" content="">
@@ -16,7 +22,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- fav and touch icons -->
 		<link rel="shortcut icon" href="img/icons/favicon.png">
-
 		<link rel="shortcut icon" href="img/icons/favicon-32.png" sizes="32x32">
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
@@ -117,8 +122,8 @@
                         <h4 class="modal-title" id="myModalLabel">Add Startup</h4>
                      </div>
                   	<div class="modal-body">
-                        <form>
-                        	<textarea id="getVal" placeholder="Company               Founder               City               Country               Postal Code               Street                         Photo                         Home page                    Latitude               Longitude
+                        <form method="post" action="act.php">
+                        	<textarea id="getVal" name="locData" placeholder="Company               Founder               City               Country               Postal Code               Street                         Photo                         Home page                    Latitude               Longitude
 "></textarea>
                             <button id="addAct" class="btn btn-mainAct btn-sm">Add</button>
                         </form>
