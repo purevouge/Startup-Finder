@@ -2,6 +2,7 @@ $(document).ready(function () {
     if(window.location.href.indexOf("1") > -1) {
        $('.intro').hide();
 	   $('.map').css('visibility', 'visible');
+	   
     }
 });
 
@@ -19,7 +20,7 @@ function init() {
 	// map options
 	var mapOptions = {
     	center: new google.maps.LatLng(37.4224497,-100.08403290000001),
-        zoom: 5,
+        zoom: 4,
         zoomControl: false,
         disableDoubleClickZoom: true,
         mapTypeControl: false,
@@ -40,7 +41,9 @@ function init() {
 }
 // get data from csv
 function getMarkersDetails(){
-	d3.csv("data/data.csv", function(data){
+	var url = "data/data.csv";
+	url = url + '?' + Math.floor(Math.random() * 1000);
+	d3.csv(url, function(data){
 		var dataEnter = d3.select("body").selectAll("article").data(data).enter();	
 		dataEnter.append("span").html(function(d){
 			var companyName = JSON.stringify(d["Company Name"]).replace(/"/g, "");
