@@ -26,84 +26,54 @@
 $(document).ready(function() {
 	// wow animation
 	new WOW().init();
-});
+	// add sorting and responsiveness to data table
+	var checkExist = setInterval(function() {
+	   if ($('#data_grid table').length) {
+		  	$("#data_grid table").addClass("tablesorter table grid footable"); 
+		  	$("#data_grid th").addClass("pressed"); 
+		  	$('#data_grid th').attr('data-hide','phone,tablet');
+		  	$('#data_grid th:first-of-type').attr('data-hide','');
+		  	$('#data_grid th:nth-of-type(2)').attr('data-hide','');
+		  	$("#data_grid table").tablesorter();
+		  
+		  	$("#data_grid tr").each(function () {
 
-// map 
-    google.maps.event.addDomListener(window, 'load', init);
-    var map;
-    function init() {
-        var mapOptions = {
-            center: new google.maps.LatLng(37.4224497,-122.08403290000001),
-            zoom: 7,
-            zoomControl: false,
-            disableDoubleClickZoom: true,
-            mapTypeControl: false,
-            scaleControl: false,
-            scrollwheel: true,
-            panControl: true,
-            streetViewControl: false,
-            draggable : true,
-            overviewMapControl: true,
-            overviewMapControlOptions: {
-                opened: false,
-            },
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}],
-        }
-        var mapElement = document.getElementById('startup-finder');
-        var map = new google.maps.Map(mapElement, mapOptions);
-        var locations = [
-						['Google', '<b>Google Inc.</b><br><img width=\"150px\" src=\"http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/02/google-headquarters.jpg\"><br>Larry Page & Sergey Brin<br>1600 Amphitheatre Pkwy<br>CA 94043- Mountain View<br>USA.', 'undefined', 'undefined', 'google.com', 37.4224497, -122.08403290000001, 'https://mapbuildr.com/assets/img/markers/solid-pin-red.png'],
-						['Apple', '<b>Apple Inc.</b><br><img src=\"http://mobilitylab.org/wp-content/uploads/2014/04/Apple.jpg\"><br>Steve Jobs & Steve Wozniak<br>1 Infinite Loop <br>CA 95014 - Cupertino<br>USA', 'undefined', 'undefined', 'apple.com', 37.3316936, -122.03021910000001, 'https://mapbuildr.com/assets/img/markers/solid-pin-red.png'],
-						['Microsoft', '<b>Microsoft Inc.</b><br><img src=\"http://cdn.geekwire.com/wp-content/uploads/2015/09/mscampus-620x405.jpg\"><br>Bill Gates<br>One Microsoft Way <br>WA 98052-7329 - Redmond<br>USA', 'undefined', 'undefined', 'microsoft.com', 37.472189, -122.190191, 'https://mapbuildr.com/assets/img/markers/solid-pin-red.png']
-        ];
-        for (i = 0; i < locations.length; i++) {
-			if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
-			if (locations[i][2] =='undefined'){ telephone ='';} else { telephone = locations[i][2];}
-			if (locations[i][3] =='undefined'){ email ='';} else { email = locations[i][3];}
-           if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
-           if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
-            marker = new google.maps.Marker({
-                icon: markericon,
-                position: new google.maps.LatLng(locations[i][5], locations[i][6]),
-                map: map,
-                title: locations[i][0],
-                desc: description,
-                tel: telephone,
-                email: email,
-                web: web
-            });
-if (web.substring(0, 7) != "http://") {
-link = "http://" + web;
-} else {
-link = web;
-}
-            bindInfoWindow(marker, map, locations[i][0], description, telephone, email, web, link);
-     }
- function bindInfoWindow(marker, map, title, desc, telephone, email, web, link) {
-      var infoWindowVisible = (function () {
-              var currentlyVisible = false;
-              return function (visible) {
-                  if (visible !== undefined) {
-                      currentlyVisible = visible;
-                  }
-                  return currentlyVisible;
-               };
-           }());
-           iw = new google.maps.InfoWindow();
-           google.maps.event.addListener(marker, 'click', function() {
-               if (infoWindowVisible()) {
-                   iw.close();
-                   infoWindowVisible(false);
-               } else {
-                   var html= "<div style='color:#000;background-color:#fff;padding:5px;width:150px;'><h4>"+title+"</h4><p>"+desc+"<p><a href='"+link+"'' >"+web+"<a></div>";
-                   iw = new google.maps.InfoWindow({content:html});
-                   iw.open(map,marker);
-                   infoWindowVisible(true);
-               }
-        });
-        google.maps.event.addListener(iw, 'closeclick', function () {
-            infoWindowVisible(false);
-        });
- }
-}
+			  	$('td:contains("http://")', this).each(function () {
+				  var imgLnk = $(this).text();
+				  $(this).html("<img src='" + imgLnk + "'>");
+			  	})
+			   
+			  	$('td:contains(".com")', this).each(function () {
+				  var siteLnk = $(this).text();
+				  $(this).html("<a target='_blank' href='http://" + siteLnk + "'>" + siteLnk + "</a>");
+			  	})
+			   
+			  	$('#data_grid th:first-of-type').html("#");
+			  	
+				$('td:first-of-type', this).html("<a href='javascript:void(0);'><i class='fa fa-eye'></i></a>");
+			   
+			  	$('td:last-of-type:contains("no")', this).each(function () {				   
+			  		$(this).closest('tr').find('td:first-of-type > a > i').toggleClass('fa-eye-slash').css('color', '#fff');
+				})
+		  	})
+		  
+		  // responsive data table
+		  $('.footable').footable({
+			calculateWidthOverride: function() {
+			  return { width: $(window).width() };
+			}
+		  });
+		  if (!$('.footable').is(':visible')) {
+		  	return;
+		  }
+		  $('.footable').trigger('footable_initialize');
+		  
+		  
+		  $(".table td:first-of-type a").click(function() {
+			  var rowId = $(this).closest('tr').attr("id");
+			  window.location.replace("php/hideShow.php?id=" + rowId);
+		  });
+		  clearInterval(checkExist);
+	   }
+	}, 100);		
+});
