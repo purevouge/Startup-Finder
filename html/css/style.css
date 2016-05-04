@@ -269,9 +269,6 @@ table.grid td:first-of-type{
 	text-align: right;
     width: 35px;
 }
-table.grid td:last-of-type, table.grid th:last-of-type{
-	display:none !important;
-}
 table.grid .footable-row-detail td:first-of-type{
 	text-align:left;
 	padding-left:43px;
@@ -399,21 +396,23 @@ textarea{
 /*=============================================================================
    responsive fixes
 ========================================================================== */
-@media (min-width: 1930px) {
-	
+@media (min-width: 1024px) {
+	table.grid td:last-of-type, table.grid th:last-of-type{
+		display:none !important;
+	}
 }
 @media (max-width: 991px) {
 	#add_locationModal ul{
 		display:none;
 	}
+	table.grid td:first-of-type a{
+		position:absolute;
+		right:17px;
+	}
 }
 @media (max-width: 767px) {
 	table.grid thead{
 		display:none;
-	}
-	table.grid td:first-of-type a{
-		position:absolute;
-		right:17px;
 	}
 }
 @media (max-width: 599px) {

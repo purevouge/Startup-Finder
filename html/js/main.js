@@ -1,8 +1,7 @@
 $(document).ready(function () {
     if(window.location.href.indexOf("1") > -1) {
        $('.intro').hide();
-	   $('.map').css('visibility', 'visible');
-	   
+	   $('.map').css('visibility', 'visible');	   
     }
 });
 
@@ -58,8 +57,9 @@ function getMarkersDetails(){
 			var longitude = JSON.stringify(d["Garage Longitude"]).replace(/"/g, "");
 			var flag = JSON.stringify(d["Enabled"]).replace(/"/g, "");
 			
-			addMarker(latitude, longitude, companyName, founder, city, country, postalCode, street, photo, homePage, flag);
-			/*alert(companyName);*/
+			if (flag == "yes"){
+				addMarker(latitude, longitude, companyName, founder, city, country, postalCode, street, photo, homePage, flag);
+			}
 		});
 	});		
 }
@@ -72,7 +72,7 @@ function addMarker(latitude, longitude, companyName, founder, city, country, pos
 	var	selectedIcon = 'img/icons/solid-pin-active.png';
 	if (web.substring(0, 7) != "http://") {link = "http://" + web;} else {link = web;}
 	// check if the row is hidden
-	if(flag != "no"){
+	
 	  var marker = new google.maps.Marker({
 		  icon: mainIcon,
 		  position: new google.maps.LatLng(latitude, longitude),
@@ -84,7 +84,7 @@ function addMarker(latitude, longitude, companyName, founder, city, country, pos
 	  });	
 	
 		markers.push(marker);
-	}
+	
 	var markerIndex =  parseInt(markers.length) - 1; 
 	google.maps.event.addListener(markers[markerIndex], 'click', function() {
 		//open info window
@@ -105,7 +105,6 @@ function addMarker(latitude, longitude, companyName, founder, city, country, pos
 d3.text("data/data.csv", function (datasetText) {
     var rows = d3.csv.parseRows(datasetText);
 	
-	console.log(rows);
     var tbl = d3.select("#data_grid").append("table");
     // headers
     tbl.append("thead").append("tr")
@@ -119,7 +118,7 @@ d3.text("data/data.csv", function (datasetText) {
     tbl.append("tbody")
         .selectAll("tr").data(rows.slice(1))
         .enter().append("tr")
-		.attr("id", function(d){ console.info(d); return d[0]; })
+		.attr("id", function(d){return d[0];})
         .selectAll("td")
         .data(function(d){return d;})
         .enter().append("td")

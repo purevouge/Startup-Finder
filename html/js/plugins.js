@@ -29,33 +29,33 @@ $(document).ready(function() {
 	// add sorting and responsiveness to data table
 	var checkExist = setInterval(function() {
 	   if ($('#data_grid table').length) {
-		  $("#data_grid table").addClass("tablesorter table grid footable"); 
-		  $("#data_grid th").addClass("pressed"); 
-		  $('#data_grid th').attr('data-hide','phone,tablet');
-		  $('#data_grid th:first-of-type').attr('data-hide','');
-		  $('#data_grid th:nth-of-type(2)').attr('data-hide','');
-		  $("#data_grid table").tablesorter();
+		  	$("#data_grid table").addClass("tablesorter table grid footable"); 
+		  	$("#data_grid th").addClass("pressed"); 
+		  	$('#data_grid th').attr('data-hide','phone,tablet');
+		  	$('#data_grid th:first-of-type').attr('data-hide','');
+		  	$('#data_grid th:nth-of-type(2)').attr('data-hide','');
+		  	$("#data_grid table").tablesorter();
 		  
-		  $("#data_grid tr").each(function () {
+		  	$("#data_grid tr").each(function () {
 
-			  $('td:contains("http://")', this).each(function () {
+			  	$('td:contains("http://")', this).each(function () {
 				  var imgLnk = $(this).text();
 				  $(this).html("<img src='" + imgLnk + "'>");
-			  })
+			  	})
 			   
-			  $('td:contains(".com")', this).each(function () {
+			  	$('td:contains(".com")', this).each(function () {
 				  var siteLnk = $(this).text();
 				  $(this).html("<a target='_blank' href='http://" + siteLnk + "'>" + siteLnk + "</a>");
-			  })
+			  	})
 			   
-			  $('#data_grid th:first-of-type').html("#");
-			  $('td:first-of-type', this).html("<a href='javascript:void(0);'><i class='fa fa-eye'></i></a>");
+			  	$('#data_grid th:first-of-type').html("#");
+			  	
+				$('td:first-of-type', this).html("<a href='javascript:void(0);'><i class='fa fa-eye'></i></a>");
 			   
-			   
-			  $('td:last-of-type:contains("no")', this).each(function () {				   
+			  	$('td:last-of-type:contains("no")', this).each(function () {				   
 			  		$(this).closest('tr').find('td:first-of-type > a > i').toggleClass('fa-eye-slash').css('color', '#fff');
-			  })
-		  })
+				})
+		  	})
 		  
 		  // responsive data table
 		  $('.footable').footable({
@@ -71,7 +71,7 @@ $(document).ready(function() {
 		  
 		  $(".table td:first-of-type a").click(function() {
 			  var rowId = $(this).closest('tr').attr("id");
-			  window.location.replace("hideShow.php?id=" + rowId);
+			  window.location.replace("php/hideShow.php?id=" + rowId);
 		  });
 		  clearInterval(checkExist);
 	   }

@@ -1,28 +1,25 @@
-<?php 
-echo htmlspecialchars($_GET["id"]);
-	$row = htmlspecialchars($_GET["id"]);
-	if (($handle = fopen("data/data.csv", "r")) !== FALSE) {
-		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-			$num = count($data);
-			echo "<p> $num fields in line $row: <br /></p>\n";
-			$row++;
-			for ($c=0; $c < $num; $c++) {
-				echo $data[$c] . "<br />\n";
-			}
-		}
-		fclose($handle);
+<?php 	
+	$filename = "data/data.csv";
+	$id = htmlspecialchars($_GET["id"]);
+	$filename_tmp = "data/data_tmp.csv";
+
+	$handle = fopen($filename,'r');
+	$handle_writer = fopen($filename_tmp,'w');
+
+	while ( ($cell = fgetcsv($handle) ) !== FALSE ) {
+    
+    	if($cell[0] == $id){
+        	$cell[11] = "no";
+    	}
+    
+    fputcsv($handle_writer, $cell);
 	}
-	
-	$mpn = htmlspecialchars($_GET["id"]);
-	$handle = fopen("data/data.csv", "r");
-	while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-		if ($mpn == rtrim($data[0]))
-		echo '<a href="' . $data[19] . '" target="_blank">' . rtrim($data[3]) . '</a>' . ' - ' . $data[15];
-	else
-		$row++;
-	}
+
 	fclose($handle);
+	fclose($handle_writer);
+
+	rename($filename_tmp, $filename);
 	
-	//header("Location: index.html?id=1");
+	header("Location: index.html?id=1");
 	die();
 ?>

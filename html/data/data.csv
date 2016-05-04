@@ -1,7 +1,8 @@
 Id,Company Name,Founder,City,Country,Postal Code, Street,Photo,Home Page,Garage Latitude,Garage Longitude,Enabled
 1,Google,Larry Page & Sergey Brin,Mountain View,USA,CA 94043,1600 Amphitheatre Pkwy,http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/02/google-headquarters.jpg,google.com,37.457674,-122.163452,yes
 2,Apple,Steve Jobs & Steve Wozniak,Cupertino,USA,CA 95014,1 Infinite Loop,http://mobilitylab.org/wp-content/uploads/2014/04/Apple.jpg,apple.com,37.3403188,-122.0581469,yes
-3,Microsoft,Bill Gates,Redmond,USA,WA 98052-7329,One Microsoft Way,http://cdn.geekwire.com/wp-content/uploads/2015/09/mscampus-620x405.jpg,microsoft.com,37.472189,-122.190191,yes
-4,Twitter,Jack Dorsey,San Francisco,USA,CA 94103,1355 Market Street - Suite 900,http://www.cnmeonline.com/wp-content/uploads/2013/10/Twitter-HQ-Midmarket_5001.jpg,twitter.com,37.7766962,-122.4189706,yes
+3,Microsoft,Bill Gates,Redmond,USA,WA 98052-7329,One Microsoft Way,http://cdn.geekwire.com/wp-content/uploads/2015/09/mscampus-620x405.jpg,microsoft.com,37.472189,-122.190191,no
+4,Twitter,Jack Dorsey,San Francisco,USA,CA 94103,1355 Market Street - Suite 900,http://www.cnmeonline.com/wp-content/uploads/2013/10/Twitter-HQ-Midmarket_5001.jpg,twitter.com,37.7766962,-122.4189706,no
 5,Facebook,Mark Zuckerberg,California,USA,CA 94025,"1 Hacker Way
-Menlo Park, CA",http://media3.s-nbcnews.com/j/newscms/2014_11/245966/140312-facebook-hq-4a_abc4414cae9e72a96c2862f45ce97495.nbcnews-ux-2880-1000.jpg,facebook.com,37.4847664,-122.1502661,no
+Menlo Park, CA",http://media3.s-nbcnews.com/j/newscms/2014_11/245966/140312-facebook-hq-4a_abc4414cae9e72a96c2862f45ce97495.nbcnews-ux-2880-1000.jpg,facebook.com,37.4847664,-122.1502661,yes
+6, IBM, Charles Ranlett Flint, New York, USA, Armonk 10504-1722, 1 New Orchard Road, http://graphics8.nytimes.com/images/2009/03/10/technology/IBM_hq.480.jpg, ibm.com,41.1328412,-73.7492038,yes
