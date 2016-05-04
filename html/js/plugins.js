@@ -49,7 +49,7 @@ $(document).ready(function() {
 			  })
 			   
 			  $('#data_grid th:first-of-type').html("#");
-			  $('#data_grid td:first-of-type').html("<a href='javascript:void(0);'><i class='fa fa-eye'></i></a>");
+			  $('td:first-of-type', this).html("<a href='javascript:void(0);'><i class='fa fa-eye'></i></a>");
 			   
 			   
 			  $('td:last-of-type:contains("no")', this).each(function () {				   
@@ -68,6 +68,11 @@ $(document).ready(function() {
 		  }
 		  $('.footable').trigger('footable_initialize');
 		  
+		  
+		  $(".table td:first-of-type a").click(function() {
+			  var rowId = $(this).closest('tr').attr("id");
+			  window.location.replace("hideShow.php?id=" + rowId);
+		  });
 		  clearInterval(checkExist);
 	   }
 	}, 100);		

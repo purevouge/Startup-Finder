@@ -22,8 +22,6 @@
 	fclose($fp);*/ // close file pointer */
 	
 	// add row to csv
-	/*$file = "data/data.csv";  	
-	$file = fopen($file,"a");*/
 	$count = count(file('data/data.csv')); 
 	$formData = $_POST['locData'];
 	$fh = fopen("data/data.csv", "a");
@@ -33,10 +31,6 @@
 	
 	fclose($fh);
 	
-	/*$line = explode(",", $_POST['locData']);
-  	fputcsv($file,$line);
-	fclose($file);*/
-	
-	//header("Location: index.html?id=1");
+	header("Location: index.html?id=1");
 	die();
 ?>

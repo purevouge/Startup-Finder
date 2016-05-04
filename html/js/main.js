@@ -104,6 +104,8 @@ function addMarker(latitude, longitude, companyName, founder, city, country, pos
 /*** data tables ***/
 d3.text("data/data.csv", function (datasetText) {
     var rows = d3.csv.parseRows(datasetText);
+	
+	console.log(rows);
     var tbl = d3.select("#data_grid").append("table");
     // headers
     tbl.append("thead").append("tr")
@@ -117,6 +119,7 @@ d3.text("data/data.csv", function (datasetText) {
     tbl.append("tbody")
         .selectAll("tr").data(rows.slice(1))
         .enter().append("tr")
+		.attr("id", function(d){ console.info(d); return d[0]; })
         .selectAll("td")
         .data(function(d){return d;})
         .enter().append("td")
